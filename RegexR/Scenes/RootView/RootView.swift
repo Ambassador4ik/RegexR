@@ -1,69 +1,105 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var isRegistrationViewPresented = false
+    @State private var isSignupViewPresented = false
     @State private var isLoginViewPresented = false
     
     @StateObject private var authManager = AuthManager()
 
     var body: some View {
+        // Authenticated: show home screen
         if (authManager.isAuthenticated) {
             HomeConfigurator.configure()
-        } else {
+        } 
+        // Not authenticated: show start menu
+        else {
             NavigationStack {
                 ZStack {
-                    Color.backgroundColor.edgesIgnoringSafeArea(.all)
+                    background
+                    
                     VStack {
-
                         Spacer()
-
-                        // Login button
-                        Button("Login") {
-                            withAnimation {
-                                isLoginViewPresented.toggle()
-                            }
-                        }
-                        .buttonStyle(CustomButtonStyle(backgroundColor: Color.backgroundColor))
-                        //.border(Color.accentTwo)
-
-                        // Sign up button
-                        Button("Sign up") {
-                            withAnimation {
-                                isRegistrationViewPresented.toggle()
-                            }
-                        }
-                        .buttonStyle(CustomButtonStyle(backgroundColor: Color.accentTwo))
-                        .padding()
+                        title
+                        
+                        Spacer()
+                        loginButton
+                        signupButton
                     }
+                    .padding([.leading, .trailing], 30)
                 }
-                // Conditional navigation destinations
+                .padding(.bottom, 5)
+                
+                // MARK: Navigation Destinations
                 .navigationDestination(isPresented: $isLoginViewPresented) {
                     LoginConfigurator.configure()
                 }
-                .navigationDestination(isPresented: $isRegistrationViewPresented) {
+                .navigationDestination(isPresented: $isSignupViewPresented) {
                     SignupConfigurator.configure()
                 }
             }
         }
     }
+    
+    // MARK: Components
+    private var background: some View {
+        Color.backgroundColor.edgesIgnoringSafeArea(.all)
+    }
+    
+    private var title: some View {
+        Text("RegexR")
+            .foregroundColor(.accentTwo)
+            .font(.system(size: 40, weight: .medium))
+    }
+    
+    private var loginButton: some View {
+        Button("Log In") {
+            withAnimation {
+                isLoginViewPresented.toggle()
+            }
+        }
+        .buttonStyle(LoginButtonStyle())
+    }
+    
+    private var signupButton: some View {
+        Button("Sign Up") {
+            withAnimation {
+                isSignupViewPresented.toggle()
+            }
+        }
+        .buttonStyle(SignupButtonStyle())
+    }
 }
 
-// Custom button style for consistency
-struct CustomButtonStyle: ButtonStyle {
+
+private struct LoginButtonStyle: ButtonStyle {
     var backgroundColor: Color = .black
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundColor(.white)
-            .frame(width: 300, height: 50)
-            .padding()
-            .background(backgroundColor)
-            .cornerRadius(10)
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+            
+            .foregroundColor(.accentTwo)
+            .background(Color.backgroundColor).cornerRadius(15)
+        
+            .font(.system(size: 18, weight: .medium))
+            
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.accentTwo, lineWidth: 3))
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
+
+private struct SignupButtonStyle: ButtonStyle {
+    var backgroundColor: Color = .black
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+        
+            .foregroundColor(.white)
+            .background(Color.accentTwo).cornerRadius(15)
+            
+            .font(.system(size: 18, weight: .medium))
+        
+            .padding(.top, 5)
     }
 }
