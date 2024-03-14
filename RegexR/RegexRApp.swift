@@ -1,18 +1,24 @@
-//
-//  RegexRApp.swift
-//  RegexR
-//
-//  Created by Ambassador4ik on 3/5/24.
-//
-
 import SwiftUI
 import SwiftData
 
+
 @main
 struct RegexRApp: App {
+    func resetUserDefaults() {
+            if let bundleID = Bundle.main.bundleIdentifier {
+                UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            }
+        }
+    init() {
+        // For development purposes
+        resetUserDefaults() // Show RootView
+        //UserDefaults.standard.set(true, forKey: "isAuthenticated") // Pass to HomeView
+    }
+    
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +31,7 @@ struct RegexRApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
         .modelContainer(sharedModelContainer)
     }
