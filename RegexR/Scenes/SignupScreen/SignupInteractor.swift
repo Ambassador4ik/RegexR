@@ -15,7 +15,7 @@ class SignupInteractor: SignupBusinessLogic {
         
         guard let jsonData = try? JSONEncoder().encode(signupData) else { return }
         do {
-            let (soyme, resp) = try await URLSession.shared.upload(for: request, from: jsonData)
+            let (_, resp) = try await URLSession.shared.upload(for: request, from: jsonData)
             response = SignupModels.Response(status: resp.status)
         } catch {}
         

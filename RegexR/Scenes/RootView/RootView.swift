@@ -8,7 +8,7 @@ struct RootView: View {
 
     var body: some View {
         if (authManager.isAuthenticated) {
-            
+            HomeConfigurator.configure()
         } else {
             NavigationStack {
                 ZStack {
@@ -23,7 +23,8 @@ struct RootView: View {
                                 isLoginViewPresented.toggle()
                             }
                         }
-                        .buttonStyle(CustomButtonStyle(backgroundColor: .gray))
+                        .buttonStyle(CustomButtonStyle(backgroundColor: Color.backgroundColor))
+                        //.border(Color.accentTwo)
 
                         // Sign up button
                         Button("Sign up") {
@@ -31,7 +32,7 @@ struct RootView: View {
                                 isRegistrationViewPresented.toggle()
                             }
                         }
-                        .buttonStyle(CustomButtonStyle(backgroundColor: Color.accentOne))
+                        .buttonStyle(CustomButtonStyle(backgroundColor: Color.accentTwo))
                         .padding()
                     }
                 }
