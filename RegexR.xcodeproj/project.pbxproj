@@ -23,6 +23,7 @@
 		686D9D022BA33D3B00CDEA82 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D012BA33D3B00CDEA82 /* SignupViewModel.swift */; };
 		686D9D042BA33D4B00CDEA82 /* SignupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D032BA33D4B00CDEA82 /* SignupConfigurator.swift */; };
 		686D9D062BA3439300CDEA82 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D052BA3439300CDEA82 /* HomeViewModel.swift */; };
+		686D9D0B2BA4242900CDEA82 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D0A2BA4242900CDEA82 /* View+Extension.swift */; };
 		687E408E2B97661B00CE59BF /* RegexRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E408D2B97661B00CE59BF /* RegexRApp.swift */; };
 		687E40942B97661D00CE59BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687E40932B97661D00CE59BF /* Assets.xcassets */; };
 		687E40972B97661D00CE59BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687E40962B97661D00CE59BF /* Preview Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		686D9D012BA33D3B00CDEA82 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		686D9D032BA33D4B00CDEA82 /* SignupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfigurator.swift; sourceTree = "<group>"; };
 		686D9D052BA3439300CDEA82 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		686D9D0A2BA4242900CDEA82 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		687E408A2B97661B00CE59BF /* RegexR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		687E408D2B97661B00CE59BF /* RegexRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRApp.swift; sourceTree = "<group>"; };
 		687E40932B97661D00CE59BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				683CE7B22BA04CDD009F4922 /* Color+Extension.swift */,
+				686D9D0A2BA4242900CDEA82 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				687E40A82B976A2100CE59BF /* LoginModels.swift in Sources */,
 				687E40B12B978CA000CE59BF /* CommonConstants.swift in Sources */,
 				686D9CFE2BA33D2500CDEA82 /* SignupPresenter.swift in Sources */,
+				686D9D0B2BA4242900CDEA82 /* View+Extension.swift in Sources */,
 				687E40A22B97698C00CE59BF /* LoginView.swift in Sources */,
 				686D9CF72BA2FD9A00CDEA82 /* LoginConfigurator.swift in Sources */,
 				687E40A42B9769DA00CE59BF /* LoginInteractor.swift in Sources */,

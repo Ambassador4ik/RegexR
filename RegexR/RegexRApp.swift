@@ -11,7 +11,7 @@ struct RegexRApp: App {
         }
     init() {
         // For development purposes
-        resetUserDefaults() // Show RootView
+        UserDefaults.standard.set(false, forKey: "isAuthenticated")
         //UserDefaults.standard.set(true, forKey: "isAuthenticated") // Pass to HomeView
     }
     

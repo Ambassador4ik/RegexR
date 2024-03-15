@@ -20,6 +20,5 @@ class LoginInteractor: LoginBusinessLogic {
         } catch {}
         
         await presenter.presentLoginResponse(response: response)
-        
     }
 }

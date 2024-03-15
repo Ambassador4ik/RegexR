@@ -16,10 +16,11 @@ struct LoginView: View {
                 loginButton
                 errorText
             }
-            .padding()
+            .padding(25)
             .background(Color.backgroundColor)
             .cornerRadius(10)
         }
+        .dismissKeyboardOnTapGesture()
     }
     
     // MARK: - Components
@@ -29,9 +30,9 @@ struct LoginView: View {
     
     private var titleText: some View {
         Text("RegexR")
-            .font(.largeTitle)
-            .foregroundColor(Color.accentTwo)
-            .padding()
+            .foregroundColor(.accentTwo)
+            .font(.system(size: 40, weight: .medium))
+            .padding(10)
     }
     
     private var usernameField: some View {
@@ -45,17 +46,18 @@ struct LoginView: View {
     }
     
     private var loginButton: some View {
-        Button("Login") {
+        Button("Log In") {
             Task {
                 await viewModel.login()
             }
         }
-        .buttonStyle(PrimaryButtonStyle())
+        .buttonStyle(LoginButtonStyle())
     }
     
     private var errorText: some View {
         Text(viewModel.errorMessage)
-            .font(.callout)
+            .foregroundColor(.red)
+            .font(.system(size: 14, weight: .regular))
     }
 }
 
@@ -63,18 +65,30 @@ struct LoginView: View {
 private extension View {
     func textFieldStyle() -> some View {
         self
-            .padding()
-            .background(Color.backgroundColor)
-            .cornerRadius(5.0)
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+            
+            .foregroundColor(.accentTwo)
+            .background(Color.backgroundColor).cornerRadius(15)
+        
+            .font(.system(size: 18, weight: .medium))
+            .multilineTextAlignment(.center)
+            
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.accentTwo, lineWidth: 3))
     }
 }
 
-private struct PrimaryButtonStyle: ButtonStyle {
+private struct LoginButtonStyle: ButtonStyle {
+    var backgroundColor: Color = .black
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+        
             .foregroundColor(.white)
-            .padding()
-            .background(Color.blue)
-            .cornerRadius(5.0)
+            .background(Color.accentTwo).cornerRadius(15)
+            
+            .font(.system(size: 18, weight: .medium))
+        
+            .padding(.top, 10)
     }
 }

@@ -17,10 +17,11 @@ struct SignupView: View {
                 signupButton
                 errorText
             }
-            .padding()
+            .padding(25)
             .background(Color.backgroundColor)
             .cornerRadius(10)
         }
+        .dismissKeyboardOnTapGesture()
     }
     
     // MARK: - Components
@@ -30,9 +31,9 @@ struct SignupView: View {
     
     private var titleText: some View {
         Text("RegexR")
-            .font(.largeTitle)
-            .foregroundColor(Color.accentTwo)
-            .padding()
+            .foregroundColor(.accentTwo)
+            .font(.system(size: 40, weight: .medium))
+            .padding(10)
     }
     
     private var usernameField: some View {
@@ -56,12 +57,13 @@ struct SignupView: View {
                 await viewModel.signup()
             }
         }
-        .buttonStyle(PrimaryButtonStyle())
+        .buttonStyle(SignupButtonStyle())
     }
     
     private var errorText: some View {
         Text(viewModel.errorMessage)
-            .font(.callout)
+            .foregroundColor(.red)
+            .font(.system(size: 14, weight: .regular))
     }
 }
 
@@ -69,18 +71,30 @@ struct SignupView: View {
 private extension View {
     func textFieldStyle() -> some View {
         self
-            .padding()
-            .background(Color.backgroundColor)
-            .cornerRadius(5.0)
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+            
+            .foregroundColor(.accentTwo)
+            .background(Color.backgroundColor).cornerRadius(15)
+        
+            .font(.system(size: 18, weight: .medium))
+            .multilineTextAlignment(.center)
+            
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.accentTwo, lineWidth: 3))
     }
 }
 
-private struct PrimaryButtonStyle: ButtonStyle {
+private struct SignupButtonStyle: ButtonStyle {
+    var backgroundColor: Color = .black
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+        
             .foregroundColor(.white)
-            .padding()
-            .background(Color.blue)
-            .cornerRadius(5.0)
+            .background(Color.accentTwo).cornerRadius(15)
+            
+            .font(.system(size: 18, weight: .medium))
+        
+            .padding(.top, 10)
     }
 }

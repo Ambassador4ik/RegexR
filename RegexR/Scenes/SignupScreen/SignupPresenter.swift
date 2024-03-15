@@ -11,13 +11,12 @@ class SignupPresenter: SignupPresentationLogic {
     @MainActor
     func presentSignupResponse(response: SignupModels.Response) {
         if response.status == .ok {
-            viewModel?.isAuthenticated = true
+            authManager.login()
         } else {
-            
             let message: String
             switch response.status {
-            case .notFound:
-                message = "Incorrect Credentials"
+            case .badRequest:
+                message = "Username Exists"
             case .internalServerError:
                 message = "Server Error"
             default:

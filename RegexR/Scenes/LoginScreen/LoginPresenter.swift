@@ -11,7 +11,7 @@ class LoginPresenter: LoginPresentationLogic {
     @MainActor
     func presentLoginResponse(response: LoginModels.Response) {
         if response.status == .ok {
-            viewModel?.isAuthenticated = true
+            authManager.login()
         } else {
             let message: String
             switch response.status {
