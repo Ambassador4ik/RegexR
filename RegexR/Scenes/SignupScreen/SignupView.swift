@@ -88,7 +88,7 @@ private struct SignupButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity, idealHeight: 30).padding()
         
-            .foregroundColor(.white)
+            .foregroundColor(Color.backgroundColor)
             .background(Color.accentTwo).cornerRadius(15)
             
             .font(.system(size: 18, weight: .medium))

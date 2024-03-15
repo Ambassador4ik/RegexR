@@ -5,8 +5,13 @@ struct RootView: View {
     @State private var isLoginViewPresented = false
     
     @EnvironmentObject private var authManager: AuthManager
-
+    @AppStorage("FirstStart") var shouldOnboardingBeShown = true
+    
+    
     var body: some View {
+        if (shouldOnboardingBeShown) {
+            OnboardingView()
+        } else
         // Authenticated: show home screen
         if (authManager.isAuthenticated) {
             HomeConfigurator.configure(authManager: authManager)
@@ -95,7 +100,7 @@ private struct SignupButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity, idealHeight: 30).padding()
         
-            .foregroundColor(.white)
+            .foregroundColor(Color.backgroundColor)
             .background(Color.accentTwo).cornerRadius(15)
             
             .font(.system(size: 18, weight: .medium))

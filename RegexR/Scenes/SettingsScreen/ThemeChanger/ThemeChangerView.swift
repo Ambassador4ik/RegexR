@@ -37,4 +37,3 @@ struct ThemeChangerView_Previews: PreviewProvider {
         ThemeChangerView(scheme: .light)
     }
 }
-

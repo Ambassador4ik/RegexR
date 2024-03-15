@@ -29,6 +29,9 @@
 		686D9D142BA463F500CDEA82 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D132BA463F500CDEA82 /* SettingsView.swift */; };
 		686D9D172BA4643600CDEA82 /* ThemeChangerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D162BA4643600CDEA82 /* ThemeChangerModels.swift */; };
 		686D9D192BA4644C00CDEA82 /* ThemeChangerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D182BA4644C00CDEA82 /* ThemeChangerView.swift */; };
+		686D9D1D2BA47B6F00CDEA82 /* OnboardingSlideModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D1C2BA47B6F00CDEA82 /* OnboardingSlideModels.swift */; };
+		686D9D202BA47B9B00CDEA82 /* OnboardingSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D1F2BA47B9B00CDEA82 /* OnboardingSlideView.swift */; };
+		686D9D222BA47BB200CDEA82 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D9D212BA47BB200CDEA82 /* OnboardingView.swift */; };
 		687E408E2B97661B00CE59BF /* RegexRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687E408D2B97661B00CE59BF /* RegexRApp.swift */; };
 		687E40942B97661D00CE59BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687E40932B97661D00CE59BF /* Assets.xcassets */; };
 		687E40972B97661D00CE59BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687E40962B97661D00CE59BF /* Preview Assets.xcassets */; };
@@ -67,6 +70,9 @@
 		686D9D162BA4643600CDEA82 /* ThemeChangerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangerModels.swift; sourceTree = "<group>"; };
 		686D9D182BA4644C00CDEA82 /* ThemeChangerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangerView.swift; sourceTree = "<group>"; };
 		686D9D1A2BA4787F00CDEA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		686D9D1C2BA47B6F00CDEA82 /* OnboardingSlideModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideModels.swift; sourceTree = "<group>"; };
+		686D9D1F2BA47B9B00CDEA82 /* OnboardingSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideView.swift; sourceTree = "<group>"; };
+		686D9D212BA47BB200CDEA82 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		687E408A2B97661B00CE59BF /* RegexR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		687E408D2B97661B00CE59BF /* RegexRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRApp.swift; sourceTree = "<group>"; };
 		687E40932B97661D00CE59BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,6 +156,24 @@
 			path = ThemeChanger;
 			sourceTree = "<group>";
 		};
+		686D9D1B2BA47B5000CDEA82 /* OnboardingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				686D9D1E2BA47B8000CDEA82 /* OnboardingSlide */,
+				686D9D212BA47BB200CDEA82 /* OnboardingView.swift */,
+			);
+			path = OnboardingScreen;
+			sourceTree = "<group>";
+		};
+		686D9D1E2BA47B8000CDEA82 /* OnboardingSlide */ = {
+			isa = PBXGroup;
+			children = (
+				686D9D1C2BA47B6F00CDEA82 /* OnboardingSlideModels.swift */,
+				686D9D1F2BA47B9B00CDEA82 /* OnboardingSlideView.swift */,
+			);
+			path = OnboardingSlide;
+			sourceTree = "<group>";
+		};
 		687E40812B97661B00CE59BF = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +215,7 @@
 		687E409D2B97689800CE59BF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				686D9D1B2BA47B5000CDEA82 /* OnboardingScreen */,
 				686D9D122BA463E200CDEA82 /* SettingsScreen */,
 				686D9D0D2BA4634C00CDEA82 /* AboutScreen */,
 				680CA62D2B98CE45009CED5E /* RootView */,
@@ -325,6 +350,7 @@
 				686D9CFA2BA33D0600CDEA82 /* SignupView.swift in Sources */,
 				687E40A62B976A0600CE59BF /* LoginPresenter.swift in Sources */,
 				686D9CF12BA21D2900CDEA82 /* HomeModels.swift in Sources */,
+				686D9D202BA47B9B00CDEA82 /* OnboardingSlideView.swift in Sources */,
 				683CE7B52BA05583009F4922 /* AuthManager.swift in Sources */,
 				687E40A82B976A2100CE59BF /* LoginModels.swift in Sources */,
 				686D9D0F2BA4636300CDEA82 /* AboutModels.swift in Sources */,
@@ -342,6 +368,7 @@
 				686D9CF52BA2FD6C00CDEA82 /* LoginViewModel.swift in Sources */,
 				680CA62F2B98CE5C009CED5E /* RootView.swift in Sources */,
 				686D9D022BA33D3B00CDEA82 /* SignupViewModel.swift in Sources */,
+				686D9D222BA47BB200CDEA82 /* OnboardingView.swift in Sources */,
 				686D9D042BA33D4B00CDEA82 /* SignupConfigurator.swift in Sources */,
 				687E40B92B97AE8500CE59BF /* HomeView.swift in Sources */,
 				686D9D142BA463F500CDEA82 /* SettingsView.swift in Sources */,
@@ -349,6 +376,7 @@
 				686D9D112BA4637600CDEA82 /* AboutView.swift in Sources */,
 				686D9D192BA4644C00CDEA82 /* ThemeChangerView.swift in Sources */,
 				687E40AC2B977EFF00CE59BF /* UserModel.swift in Sources */,
+				686D9D1D2BA47B6F00CDEA82 /* OnboardingSlideModels.swift in Sources */,
 				686D9CF32BA21ED400CDEA82 /* HomeConfigurator.swift in Sources */,
 				683CE7B32BA04CDD009F4922 /* Color+Extension.swift in Sources */,
 				687E408E2B97661B00CE59BF /* RegexRApp.swift in Sources */,
