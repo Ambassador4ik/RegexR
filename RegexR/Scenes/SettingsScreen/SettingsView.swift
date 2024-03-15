@@ -7,12 +7,17 @@ struct SettingsView: View {
     @Environment(\.colorScheme) private var scheme
     @AppStorage("userTheme") private var userTheme: ThemeChangerModels.Theme = .systemDefault
     
+    var authManager: AuthManager?
+    
     var body: some View {
         NavigationStack {
             List {
                 Section(header: Text("Appearance")) {
                     Button("Change theme") {
                         isSheetVisible.toggle()
+                    }
+                    Button("Logout") {
+                        authManager?.logout()
                     }
                 }
             }
@@ -36,8 +41,3 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}

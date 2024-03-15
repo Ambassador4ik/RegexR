@@ -9,7 +9,7 @@ struct RootView: View {
     var body: some View {
         // Authenticated: show home screen
         if (authManager.isAuthenticated) {
-            HomeConfigurator.configure()
+            HomeConfigurator.configure(authManager: authManager)
         } 
         // Not authenticated: show start menu
         else {

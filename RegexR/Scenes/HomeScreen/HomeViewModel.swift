@@ -7,6 +7,7 @@ class HomeViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     
     var interactor: HomeInteractor?
+    var authManager: AuthManager?
     
     func checkMatches() {
         interactor?.checkMatches(request: HomeModels.Request(regex: regex, stringList: stringList))
