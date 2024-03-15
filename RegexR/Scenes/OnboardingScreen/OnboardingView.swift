@@ -1,12 +1,10 @@
 import SwiftUI
 
-
-
 struct OnboardingView: View {
     private let slides: [OnboardingSlideModels.OnboardingSlide] = [
-        OnboardingSlideModels.OnboardingSlide(image: "figure.run", title: "Run", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis gravida finibus. Morbi in eros pretium, fringilla orci sed, bibendum dui. Praesent sed egestas ante."),
-        OnboardingSlideModels.OnboardingSlide(image: "airplane.departure", title: "Depart", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis gravida finibus"),
-        OnboardingSlideModels.OnboardingSlide(image: "airplane", title: "Fly", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis gravida finibus. Morbi in eros pretium, fringilla orci sed, bibendum dui. Praesent sed egestas ante. "),
+        OnboardingSlideModels.OnboardingSlide(image: "text.magnifyingglass", title: "Discover", description: "Explore the power of Regular Expressions. Quickly test your patterns and see the matches in real-time."),
+        OnboardingSlideModels.OnboardingSlide(image: "book", title: "Learn", description: "Dive into our tutorials and learn how to craft effective Regular Expressions, no matter your skill level."),
+        OnboardingSlideModels.OnboardingSlide(image: "star", title: "Master", description: "Save your favorite expressions and share them with the community. Become a Regex master."),
     ]
 
     @AppStorage("FirstStart") var shouldOnboardingBeShown = true
@@ -16,13 +14,13 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             TabView(selection: $currentPage) {
-                ForEach (0 ..< slides.count, id:\.self) { idx in
+                ForEach(0 ..< slides.count, id: \.self) { idx in
                     OnboardingSlideView(slide: slides[idx])
                         .tag(idx)
                         .padding()
                 }
             }
-            // implements scrolling part
+            // Implements scrolling part
             .tabViewStyle(PageTabViewStyle())
 
             // NEXT button
@@ -30,7 +28,7 @@ struct OnboardingView: View {
                 if (self.currentPage != slides.count - 1) {
                     Spacer()
                     Button(action: {
-                        withAnimation (.easeInOut(duration: 0.5)) {
+                        withAnimation(.easeInOut(duration: 0.5)) {
                             self.currentPage = currentPage + 1
                         }
                     }) {
@@ -41,9 +39,9 @@ struct OnboardingView: View {
                             .background(Circle().fill(.blue))
                     }
                 } else {
+                    // Get Started button for the last slide
                     Button(action: {
-                        withAnimation (.easeInOut(duration: 0.5)) {
-                            // show onboarding only in the initial app run
+                        withAnimation(.easeInOut(duration: 0.5)) {
                             shouldOnboardingBeShown = false
                         }
                     }) {
@@ -55,7 +53,6 @@ struct OnboardingView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(.blue)
                 }
-
             }
             .padding()
         }
