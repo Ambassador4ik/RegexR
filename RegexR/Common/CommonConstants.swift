@@ -1,3 +1,3 @@
 enum CommonConstants {
-    static let apiEndpoint: String = "localhost:3000"
+    static let apiEndpoint: String = "16.170.244.56:3000"
 }

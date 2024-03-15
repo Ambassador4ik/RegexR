@@ -66,6 +66,7 @@
 		686D9D132BA463F500CDEA82 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		686D9D162BA4643600CDEA82 /* ThemeChangerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangerModels.swift; sourceTree = "<group>"; };
 		686D9D182BA4644C00CDEA82 /* ThemeChangerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangerView.swift; sourceTree = "<group>"; };
+		686D9D1A2BA4787F00CDEA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		687E408A2B97661B00CE59BF /* RegexR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegexR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		687E408D2B97661B00CE59BF /* RegexRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexRApp.swift; sourceTree = "<group>"; };
 		687E40932B97661D00CE59BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 		687E408C2B97661B00CE59BF /* RegexR */ = {
 			isa = PBXGroup;
 			children = (
+				686D9D1A2BA4787F00CDEA82 /* Info.plist */,
 				683CE7B12BA04CC3009F4922 /* Extensions */,
 				687E40A92B977EBA00CE59BF /* Common */,
 				687E409D2B97689800CE59BF /* Scenes */,
@@ -486,6 +488,8 @@
 				DEVELOPMENT_TEAM = 48V6X73779;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RegexR/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = i386;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -516,6 +520,8 @@
 				DEVELOPMENT_TEAM = 48V6X73779;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RegexR/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = i386;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
