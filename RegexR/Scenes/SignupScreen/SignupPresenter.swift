@@ -11,7 +11,7 @@ class SignupPresenter: SignupPresentationLogic {
     @MainActor
     func presentSignupResponse(response: SignupModels.Response) {
         if response.status == .ok {
-            authManager.login()
+            viewModel?.authManager?.login()
         } else {
             let message: String
             switch response.status {

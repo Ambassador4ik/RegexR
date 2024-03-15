@@ -7,10 +7,13 @@ class SignupViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var isAuthenticated: Bool = false
     
+    var authManager: AuthManager?
+    
     private var interactor: SignupBusinessLogic?
     
-    func setup(interactor: SignupBusinessLogic) {
+    func setup(interactor: SignupBusinessLogic, authManager: AuthManager) {
         self.interactor = interactor
+        self.authManager = authManager
     }
     
     func signup() async {

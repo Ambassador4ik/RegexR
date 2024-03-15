@@ -6,7 +6,7 @@ struct HomeView: View {
     
     // MARK: Body
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack(spacing: 20) { // Increase spacing for better separation
                 regexLabel
                 regexField
@@ -27,18 +27,14 @@ struct HomeView: View {
                 matchedStringsListField
                 
                 checkButton
-            
+                Spacer()
+                bottomPanel
             }
             .padding()
             .background(Color.backgroundColor) // Adapt to dark and light mode
             .cornerRadius(10)
             .shadow(radius: 2) // Subtle shadow for the entire stack
             
-            VStack {
-                            Spacer() // Pushes everything below to the bottom
-
-                            bottomPanel // Add the bottom panel here
-                        }
         }
         .background(Color.backgroundColor.ignoresSafeArea(edges: .all)) // Apply background to ZStack correctly
         .padding(.horizontal) // Give some breathing room on the sides
@@ -58,7 +54,7 @@ struct HomeView: View {
     
     private var regexField: some View {
         TextField("Insert your regex", text: $viewModel.regex)
-            .textFieldStyle(RoundedBorderTextFieldStyle()) // iOS default rounded style
+            .textFieldStyle() // iOS default rounded style
     }
     
     private var stringListLabel: some View {
@@ -139,6 +135,21 @@ struct HomeView: View {
     
 }
 
+// MARK: - Custom Styles
+private extension View {
+    func textFieldStyle() -> some View {
+        self
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+            
+            .foregroundColor(.accentTwo)
+            .background(Color.backgroundColor).cornerRadius(15)
+        
+            .font(.system(size: 18, weight: .medium))
+            .multilineTextAlignment(.center)
+            
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.accentTwo, lineWidth: 3))
+    }
+}
 
 private struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {

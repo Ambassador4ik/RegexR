@@ -4,7 +4,7 @@ struct RootView: View {
     @State private var isSignupViewPresented = false
     @State private var isLoginViewPresented = false
     
-    @StateObject private var authManager = AuthManager()
+    @EnvironmentObject private var authManager: AuthManager
 
     var body: some View {
         // Authenticated: show home screen
@@ -31,10 +31,10 @@ struct RootView: View {
                 
                 // MARK: Navigation Destinations
                 .navigationDestination(isPresented: $isLoginViewPresented) {
-                    LoginConfigurator.configure()
+                    LoginConfigurator.configure(authManager: authManager)
                 }
                 .navigationDestination(isPresented: $isSignupViewPresented) {
-                    SignupConfigurator.configure()
+                    SignupConfigurator.configure(authManager: authManager)
                 }
             }
         }

@@ -4,6 +4,8 @@ import SwiftData
 
 @main
 struct RegexRApp: App {
+    @StateObject private var authManager = AuthManager()
+    
     func resetUserDefaults() {
             if let bundleID = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundleID)
@@ -11,8 +13,8 @@ struct RegexRApp: App {
         }
     init() {
         // For development purposes
-        UserDefaults.standard.set(false, forKey: "isAuthenticated")
-        //UserDefaults.standard.set(true, forKey: "isAuthenticated") // Pass to HomeView
+        //UserDefaults.standard.set(false, forKey: "isAuthenticated")
+        UserDefaults.standard.set(true, forKey: "isAuthenticated") // Pass to HomeView
     }
     
     
@@ -32,6 +34,7 @@ struct RegexRApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environmentObject(authManager)
         }
         .modelContainer(sharedModelContainer)
     }

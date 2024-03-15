@@ -6,10 +6,13 @@ class LoginViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var isAuthenticated: Bool = false
     
+    var authManager: AuthManager?
+    
     private var interactor: LoginBusinessLogic?
     
-    func setup(interactor: LoginBusinessLogic) {
+    func setup(interactor: LoginBusinessLogic, authManager: AuthManager) {
         self.interactor = interactor
+        self.authManager = authManager
     }
     
     func login() async {
