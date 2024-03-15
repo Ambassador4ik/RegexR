@@ -2,43 +2,29 @@ import SwiftUI
 import MapKit
 
 struct AboutView: View {
-    @Environment(\.presentationMode) var presentationMode
-
     let hsePlace: AboutModels.Place
     let places: [AboutModels.Place]
     @State private var hseRegion: MKCoordinateRegion
-
-    init() {
+    
+    init () {
         hsePlace = AboutModels.Place(latitude: 55.754032, longitude: 37.648914)
         places = [hsePlace]
-
+        
         _hseRegion = State<MKCoordinateRegion>.init(initialValue: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: hsePlace.latitude, longitude: hsePlace.longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
     }
-
+    
+    
     let links = [
         AboutModels.Links(url: "mailto:hse@hse.ru", image: "envelope.fill"),
-        AboutModels.Links(url: "https://www.hse.ru/", image: "network"),
-        AboutModels.Links(url: "tel:+74957713232", image: "phone.fill"),
+        AboutModels.Links( url: "https://www.hse.ru/", image: "network"),
+        AboutModels.Links( url: "tel:+74957713232", image: "phone.fill"),
     ]
 
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.blue)
-                        .imageScale(.large)
-                        .padding()
-                }
-                Spacer()
-            }
-            
             Text("RegexR")
                 .font(.title)
                 .padding()
-
             HStack {
                 ForEach(links) { link in
                     Link(destination: URL(string: link.url)!) {
@@ -47,6 +33,7 @@ struct AboutView: View {
                     .padding()
                     .font(.system(size: 32))
                 }
+                    
             }
             Text("We on maps")
                 .font(.title2)

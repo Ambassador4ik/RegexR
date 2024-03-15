@@ -5,10 +5,10 @@ class HomePresenter {
     
     func presentMatches(response: HomeModels.Response) {
         viewModel?.matchedStrings = response.matches
+        viewModel?.errorMessage = ""
     }
     
     func presentError(error: String) {
-        // Optionally handle the error, e.g., by updating the ViewModel
-        print(error) // For simplicity, just printing the error
+        viewModel?.errorMessage = error
     }
 }

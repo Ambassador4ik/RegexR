@@ -4,6 +4,7 @@ class HomeViewModel: ObservableObject {
     @Published var regex: String = ""
     @Published var stringList: String = ""
     @Published var matchedStrings: [String] = []
+    @Published var errorMessage: String = ""
     
     var interactor: HomeInteractor?
     

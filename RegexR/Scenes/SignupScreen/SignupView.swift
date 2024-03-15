@@ -84,8 +84,6 @@ private extension View {
 }
 
 private struct SignupButtonStyle: ButtonStyle {
-    var backgroundColor: Color = .black
-    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: .infinity, idealHeight: 30).padding()

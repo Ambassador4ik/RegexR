@@ -35,6 +35,7 @@ struct RegexRApp: App {
         WindowGroup {
             RootView()
                 .environmentObject(authManager)
+            
         }
         .modelContainer(sharedModelContainer)
     }

@@ -4,41 +4,36 @@ struct HomeView: View {
     // MARK: States & Models
     @ObservedObject var viewModel: HomeViewModel
     
+    @State private var isAboutViewPresented = false
+    @State private var isSettingsViewPresented = false
+    @State private var isProfileViewPresented = false
+    
     // MARK: Body
     var body: some View {
         ZStack(alignment: .top) {
-            VStack(spacing: 20) { // Increase spacing for better separation
+            VStack(spacing: 20) {
                 regexLabel
                 regexField
-                    .padding()
-                    .background(Color.accentTwo) // Light gray for light mode, darker for dark mode
-                    .cornerRadius(8)
-                    .shadow(radius: 1) // Subtle shadow for depth
                 
                 stringListLabel
                 stringListField
-                    .padding()
-                    .frame(height: 150) // Fixed height for better control
-                    .background(Color.accentTwo)
-                    .cornerRadius(8)
-                    .shadow(radius: 1)
 
                 matchedStringsListLabel
                 matchedStringsListField
                 
                 checkButton
+                
+                errorText
+                
                 Spacer()
                 bottomPanel
             }
             .padding()
-            .background(Color.backgroundColor) // Adapt to dark and light mode
-            .cornerRadius(10)
-            .shadow(radius: 2) // Subtle shadow for the entire stack
-            
+            .background(Color.backgroundColor)
         }
-        .background(Color.backgroundColor.ignoresSafeArea(edges: .all)) // Apply background to ZStack correctly
-        .padding(.horizontal) // Give some breathing room on the sides
-        //.offset(y: -100)
+        .background(Color.backgroundColor.ignoresSafeArea(edges: .all))
+        .dismissKeyboardOnTapGesture()
+        .padding(.horizontal)
     }
     
     // MARK: Components
@@ -48,8 +43,9 @@ struct HomeView: View {
     
     private var regexLabel: some View {
         Text("Regular Expression")
-            .font(.headline) // Make the label text slightly larger
+            .font(.system(size: 18, weight: .medium))
             .foregroundColor(.primary) // Ensure it adapts to dark and light mode
+            .shadow(radius: 2)
     }
     
     private var regexField: some View {
@@ -59,38 +55,28 @@ struct HomeView: View {
     
     private var stringListLabel: some View {
         Text("String List")
-            .font(.headline) // Correct label text and style
+            .font(.system(size: 18, weight: .medium))
             .foregroundColor(.primary)
+            .shadow(radius: 2)
     }
     
     private var stringListField: some View {
         TextEditor(text: $viewModel.stringList)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8) // Add border to TextEditor
-                    .stroke(Color.secondary, lineWidth: 1)
-            )
+            .textFieldStyle()
     }
     
     private var matchedStringsListLabel: some View {
         Text("Matches")
-            .font(.headline) // Correct label text and style
+            .font(.system(size: 18, weight: .medium))
             .foregroundColor(.primary)
+            .shadow(radius: 2)
     }
     
     private var matchedStringsListField: some View {
-        // Concatenate the matched strings into a single newline-separated string
         let matchesText = viewModel.matchedStrings.joined(separator: "\n")
         
-        return TextEditor(text: .constant(matchesText)) // Use a constant binding if the text is not meant to be edited
-            .padding()
-            .frame(height: 150) // Adjust height as necessary
-            .background(Color.accentTwo)
-            .cornerRadius(8)
-            .shadow(radius: 1)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.secondary, lineWidth: 1)
-            )
+        return TextEditor(text: .constant(matchesText))
+            .textFieldStyle()
     }
     
     private var checkButton: some View {
@@ -102,36 +88,55 @@ struct HomeView: View {
         .buttonStyle(PrimaryButtonStyle())
     }
     
+    private var errorText: some View {
+        Text(viewModel.errorMessage)
+            .foregroundColor(.red)
+            .font(.system(size: 14, weight: .regular))
+    }
+    
     private var bottomPanel: some View {
+        NavigationStack {
             HStack {
                 Button(action: {
-                    // Action for About button
+                    isAboutViewPresented.toggle()
                 }) {
                     Image(systemName: "info.circle")
+                        .imageScale(.large)
+                        .foregroundColor(Color.accentTwo)
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     // Action for Profile button
                 }) {
                     Image(systemName: "person.crop.circle")
+                        .imageScale(.large)
+                        .foregroundColor(Color.accentTwo)
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
-                    // Action for Settings button
+                    isSettingsViewPresented.toggle()
                 }) {
                     Image(systemName: "gear")
+                        .imageScale(.large)
+                        .foregroundColor(Color.accentTwo)
                 }
             }
-            .padding() // Add padding for better touch targets and aesthetics
-            .background(Color.accentTwo) // Use a background color that adapts to dark and light mode
-            .cornerRadius(10) // Optional: round the corners
-            .shadow(radius: 2) // Optional: add a shadow for some depth
-            .padding(.horizontal) // Match the horizontal padding of the overall layout
+            .padding().cornerRadius(10).shadow(radius: 2)
+            .frame(maxWidth: .infinity)
+            .background(Color.backgroundColor)
+            
+            .fullScreenCover(isPresented: $isAboutViewPresented) {
+                AboutView()
+            }
+            .fullScreenCover(isPresented: $isSettingsViewPresented) {
+                SettingsView()
+            }
         }
+    }
     
 }
 
@@ -139,24 +144,29 @@ struct HomeView: View {
 private extension View {
     func textFieldStyle() -> some View {
         self
-            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+            .frame(maxWidth: .infinity, minHeight: 30).padding()
             
             .foregroundColor(.accentTwo)
             .background(Color.backgroundColor).cornerRadius(15)
         
             .font(.system(size: 18, weight: .medium))
-            .multilineTextAlignment(.center)
             
             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.accentTwo, lineWidth: 3))
+            .shadow(radius: 2)
     }
 }
 
 private struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .frame(maxWidth: .infinity, idealHeight: 30).padding()
+        
             .foregroundColor(.white)
-            .padding()
-            .background(Color.blue)
-            .cornerRadius(5.0)
+            .background(Color.accentTwo).cornerRadius(15)
+            
+            .font(.system(size: 18, weight: .medium))
+        
+            .padding(.top, 10)
+            .shadow(radius: 2)
     }
 }
